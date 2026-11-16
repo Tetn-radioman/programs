@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Библиотека программ и проектов R7BD">
+    <title>R7BD — Библиотека программ</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #0d1117;
+            color: #e6edf3;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            padding: 65px 20px 55px;
+            text-align: center;
+            border-bottom: 1px solid #30363d;
+            background: #161b22;
+        }
+
+        header h1 {
+            margin: 0 0 15px;
+            font-size: clamp(32px, 6vw, 52px);
+        }
+
+        header p {
+            color: #8b949e;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 35px 20px;
+        }
+
+        .section-title {
+            margin-bottom: 25px;
+            font-size: 26px;
+        }
+
+        .library {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            padding: 24px;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .card:hover {
+            border-color: #388bfd;
+            transform: translateY(-3px);
+        }
+
+        .card h3 {
+            margin: 0 0 12px;
+            font-size: 22px;
+        }
+
+        .card p {
+            color: #8b949e;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .tag {
+            display: inline-block;
+            align-self: flex-start;
+            padding: 5px 10px;
+            margin-bottom: 15px;
+            border-radius: 20px;
+            background: #1f3a2d;
+            color: #7ee787;
+            font-size: 12px;
+        }
+
+        .platform {
+            color: #8b949e;
+            font-size: 13px;
+            margin: 10px 0 20px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 15px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .download {
+            background: #238636;
+            color: white;
+        }
+
+        .download:hover {
+            background: #2ea043;
+        }
+
+        .source {
+            background: #21262d;
+            color: #c9d1d9;
+            border: 1px solid #30363d;
+        }
+
+        .source:hover {
+            background: #30363d;
+        }
+
+        footer {
+            padding: 25px;
+            margin-top: 40px;
+            border-top: 1px solid #30363d;
+            text-align: center;
+            color: #8b949e;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #58a6ff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>R7BD — Software Library</h1>
+    <p>Наш софт в одном месте</p>
+</header>
+
+<main class="container">
+
+    <h2 class="section-title" id="library">Библиотека программ</h2>
+
+    <div class="library">
+
+        <article class="card">
+            <span class="tag">Android</span>
+
+            <h3>EE — учим слова</h3>
+
+            <p>
+                Приложение для изучения английских слов.
+                Карточки слов, перевод и система рейтинга
+                для повторения изученного материала.
+            </p>
+
+            <div class="platform">
+                Платформа: Android
+            </div>
+
+            <div class="buttons">
+                <a class="button download"
+                   href="https://github.com/Tetn-radioman/Learning-English/releases/latest">
+                    Скачать
+                </a>
+
+                <a class="button source"
+                   href="https://github.com/Tetn-radioman/Learning-English">
+                    Исходники
+                </a>
+            </div>
+        </article>
+
+    </div>
+
+</main>
+
+<footer>
+    <p>R7BD · Personal Software Projects</p>
+    <a href="https://github.com/Tetn-radioman">
+        GitHub
+    </a>
+    ·
+    <a href="https://r7bd.ru">
+        Главная страница
+    </a>
+</footer>
+
+</body>
+</html>
