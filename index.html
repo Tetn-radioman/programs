@@ -4,203 +4,318 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Библиотека программ и проектов R7BD">
-    <title>R7BD — Библиотека программ</title>
+
+    <meta name="theme-color" content="#0d1117">
+    <meta name="description" content="R7BD — библиотека программ и проектов">
+
+    <title>R7BD — Software Library</title>
 
     <style>
         * {
             box-sizing: border-box;
         }
 
+        :root {
+            --background: #0d1117;
+            --surface: #161b22;
+            --border: #30363d;
+            --text: #e6edf3;
+            --muted: #8b949e;
+            --accent: #58a6ff;
+            --green: #238636;
+        }
+
         body {
             margin: 0;
-            background: #0d1117;
-            color: #e6edf3;
-            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background:
+                radial-gradient(ellipse at 50% -20%, #18345a 0%, transparent 55%),
+                var(--background);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont,
+                         "Segoe UI", Arial, sans-serif;
         }
 
-        header {
-            padding: 65px 20px 55px;
-            text-align: center;
-            border-bottom: 1px solid #30363d;
-            background: #161b22;
+        a {
+            color: inherit;
         }
 
-        header h1 {
-            margin: 0 0 15px;
-            font-size: clamp(32px, 6vw, 52px);
+        .topbar {
+            height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 max(24px, calc((100% - 1100px) / 2));
+            border-bottom: 1px solid var(--border);
+            background: rgba(13, 17, 23, 0.8);
         }
 
-        header p {
-            color: #8b949e;
+        .logo {
+            font-size: 23px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-decoration: none;
+        }
+
+        .topbar a:last-child {
+            color: var(--muted);
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .topbar a:last-child:hover {
+            color: var(--accent);
+        }
+
+        .hero {
+            max-width: 1100px;
+            margin: auto;
+            padding: 75px 24px 55px;
+        }
+
+        .eyebrow {
+            color: var(--accent);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            margin: 15px 0;
+            font-size: clamp(36px, 6vw, 58px);
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            max-width: 560px;
+            color: var(--muted);
             font-size: 17px;
+            line-height: 1.7;
         }
 
         .container {
             max-width: 1100px;
             margin: auto;
-            padding: 35px 20px;
+            padding: 0 24px 70px;
         }
 
-        .section-title {
-            margin-bottom: 25px;
-            font-size: 26px;
+        .section-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 22px;
+        }
+
+        .section-heading h2 {
+            font-size: 23px;
+            margin: 0;
+        }
+
+        .count {
+            color: var(--muted);
+            font-size: 13px;
         }
 
         .library {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
             gap: 20px;
         }
 
         .card {
             display: flex;
             flex-direction: column;
-            padding: 24px;
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 12px;
-            transition: border-color 0.2s, transform 0.2s;
+            min-height: 300px;
+            padding: 25px;
+            background: rgba(22, 27, 34, 0.92);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            transition: 0.2s ease;
         }
 
         .card:hover {
             border-color: #388bfd;
-            transform: translateY(-3px);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .platform {
+            padding: 6px 11px;
+            background: #1f2937;
+            color: #93c5fd;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .version {
+            color: var(--muted);
+            font-size: 12px;
         }
 
         .card h3 {
             margin: 0 0 12px;
-            font-size: 22px;
+            font-size: 23px;
         }
 
         .card p {
-            color: #8b949e;
-            line-height: 1.6;
-            flex: 1;
+            margin: 0 0 22px;
+            color: var(--muted);
+            line-height: 1.65;
+            font-size: 14px;
         }
 
-        .tag {
-            display: inline-block;
-            align-self: flex-start;
-            padding: 5px 10px;
-            margin-bottom: 15px;
-            border-radius: 20px;
-            background: #1f3a2d;
-            color: #7ee787;
-            font-size: 12px;
-        }
-
-        .platform {
-            color: #8b949e;
-            font-size: 13px;
-            margin: 10px 0 20px;
-        }
-
-        .buttons {
+        .actions {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 10px 15px;
-            border-radius: 7px;
-            text-decoration: none;
-            font-size: 14px;
-            text-align: center;
+            align-items: center;
+            gap: 12px;
+            margin-top: auto;
         }
 
         .download {
-            background: #238636;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 12px 18px;
+            background: var(--green);
             color: white;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background 0.2s;
         }
 
         .download:hover {
             background: #2ea043;
         }
 
-        .source {
-            background: #21262d;
-            color: #c9d1d9;
-            border: 1px solid #30363d;
+        .secondary {
+            color: var(--muted);
+            font-size: 13px;
+            text-decoration: none;
+            padding: 8px 0;
         }
 
-        .source:hover {
-            background: #30363d;
+        .secondary:hover {
+            color: var(--accent);
         }
 
         footer {
-            padding: 25px;
-            margin-top: 40px;
-            border-top: 1px solid #30363d;
+            padding: 27px 20px;
+            border-top: 1px solid var(--border);
             text-align: center;
-            color: #8b949e;
-            font-size: 14px;
+            color: var(--muted);
+            font-size: 13px;
         }
 
         footer a {
-            color: #58a6ff;
+            color: var(--accent);
             text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                padding-top: 55px;
+            }
+
+            .card {
+                min-height: 280px;
+            }
+
+            .topbar {
+                height: 60px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-<header>
-    <h1>R7BD — Software Library</h1>
-    <p>Наш софт в одном месте</p>
-</header>
+    <nav class="topbar">
+        <a class="logo" href="https://r7bd.ru">R7BD</a>
+        <a href="https://github.com/Tetn-radioman">
+            GitHub ↗
+        </a>
+    </nav>
 
-<main class="container">
+    <header class="hero">
+        <div class="eyebrow">Personal Software Projects</div>
 
-    <h2 class="section-title" id="library">Библиотека программ</h2>
+        <h1>Software Library</h1>
 
-    <div class="library">
+        <p>
+            Коллекция программ и проектов.
+            Здесь можно найти последние версии приложений,
+            скачать их и ознакомиться с исходным кодом.
+        </p>
+    </header>
 
-        <article class="card">
-            <span class="tag">Android</span>
+    <main class="container">
 
-            <h3>EE — учим слова</h3>
+        <div class="section-heading">
+            <h2>Библиотека</h2>
+            <span class="count">01 приложение</span>
+        </div>
 
-            <p>
-                Приложение для изучения английских слов.
-                Карточки слов, перевод и система рейтинга
-                для повторения изученного материала.
-            </p>
+        <div class="library">
 
-            <div class="platform">
-                Платформа: Android
-            </div>
+            <article class="card">
 
-            <div class="buttons">
-                <a class="button download"
-                   href="https://github.com/Tetn-radioman/Learning-English/releases/latest">
-                    Скачать
-                </a>
+                <div class="card-top">
+                    <span class="platform">Android</span>
+                    <span class="version">v1.0.0</span>
+                </div>
 
-                <a class="button source"
-                   href="https://github.com/Tetn-radioman/Learning-English">
-                    Исходники
-                </a>
-            </div>
-        </article>
+                <h3>EE — учим слова</h3>
 
-    </div>
+                <p>
+                    Приложение для изучения английских слов.
+                    Карточки, перевод и система рейтинга
+                    помогают организовать повторение
+                    изученного материала.
+                </p>
 
-</main>
+                <div class="actions">
 
-<footer>
-    <p>R7BD · Personal Software Projects</p>
-    <a href="https://github.com/Tetn-radioman">
-        GitHub
-    </a>
-    ·
-    <a href="https://r7bd.ru">
-        Главная страница
-    </a>
-</footer>
+                    <a class="download"
+                       href="https://github.com/Tetn-radioman/Learning-English/releases/download/v1.0.0/android-EE.apk">
+                        ↓ Скачать APK
+                    </a>
+
+                    <a class="secondary"
+                       href="https://github.com/Tetn-radioman/Learning-English/releases/tag/v1.0.0">
+                        Релиз ↗
+                    </a>
+
+                    <a class="secondary"
+                       href="https://github.com/Tetn-radioman/Learning-English">
+                        Исходники ↗
+                    </a>
+
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <footer>
+        R7BD · Personal Software Projects
+        <br><br>
+        <a href="https://r7bd.ru">Главная</a>
+        &nbsp;·&nbsp;
+        <a href="https://github.com/Tetn-radioman">GitHub</a>
+    </footer>
 
 </body>
 </html>
